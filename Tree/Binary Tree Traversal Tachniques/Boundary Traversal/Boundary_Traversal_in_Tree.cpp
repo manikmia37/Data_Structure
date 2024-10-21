@@ -32,12 +32,16 @@ void Print_LeftBoundary_NonLeaves(TreeNode *root)
   {
       return;
   }
-  if(root->LeftChild==NULL && root->RightChild == NULL)
+  if(root->LeftChild != NULL)
   {
-      return;
+      cout<<root->data<<" ";
+      Print_LeftBoundary_NonLeaves(root->LeftChild);
   }
-  Print_LeftBoundary_NonLeaves(root->LeftChild);
-  cout<<root->data<<" ";
+  else if(root->RightChild != NULL)
+  {
+      cout<<root->data<<" ";
+      Print_LeftBoundary_NonLeaves(root->RightChild);
+  }
   return;
 }
 
@@ -184,4 +188,22 @@ input-2:
 10 -1 -1
 output-2:
 Boundary Traversal: 1 2 4 8 9 10 7 3
+
+input-3:
+13
+1 2 3
+2 4 5
+3 -1 6
+4 7 -1
+5 8 9
+6 -1 10
+7 -1 11
+8 -1 -1
+9 -1 -1
+10 12 -1
+11 -1 13
+12 -1 -1
+13 -1 -1
+output-3: 1 2 4 7 11 13 8 9 12 10 6 3
+
 */
