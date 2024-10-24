@@ -53,7 +53,6 @@ TreeNode* build_TreeFrom_InorderAnd_Preorder(int start,int End)
     int position=search_in_Inorder(current_value,start,End);
     if(position<0)
     {
-        cout<<"The given traversal sequences are not correct! Please Try Again";
         return NULL;
     }
     newnode->LeftChild=build_TreeFrom_InorderAnd_Preorder(start,position-1);
