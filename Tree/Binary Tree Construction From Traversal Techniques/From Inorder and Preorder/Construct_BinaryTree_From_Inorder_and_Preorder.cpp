@@ -46,9 +46,9 @@ TreeNode* build_TreeFrom_InorderAnd_Preorder(int start,int End, int index)
     {
         return NULL;
     }
-    //static int id=0;
+    /*static int id=0;*/
     int current_value=Preorder[index];
-    //id=id+1;
+    /*id=id+1;*/
     TreeNode *newnode=new TreeNode(current_value);
     /*if(start==End)  // ai block ti likhleo hobe or uporer if condition block ti likhte hobe
     {
