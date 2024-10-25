@@ -40,23 +40,24 @@ int search_in_Inorder(int current_value,int start, int End)
     return -1;
 }
 
-TreeNode* build_TreeFrom_InorderAnd_Preorder(int start,int End)
+TreeNode* build_TreeFrom_InorderAnd_Preorder(int start,int End, int index)
 {
-    static int id=0;
-    int current_value=Preorder[id];
-    id=id+1;
-    TreeNode *newnode=new TreeNode(current_value);
-    if(start==End)
-    {
-        return newnode;
-    }
-    int position=search_in_Inorder(current_value,start,End);
-    if(position<0)
+    if(start>End)
     {
         return NULL;
     }
-    newnode->LeftChild=build_TreeFrom_InorderAnd_Preorder(start,position-1);
-    newnode->RightChild=build_TreeFrom_InorderAnd_Preorder(position+1,End);
+    //static int id=0;
+    int current_value=Preorder[index];
+    //id=id+1;
+    TreeNode *newnode=new TreeNode(current_value);
+    /*if(start==End)  // ai block ti likhleo hobe or uporer if condition block ti likhte hobe
+    {
+        return newnode;
+    }*/
+    int position=search_in_Inorder(current_value,start,End);
+
+    newnode->LeftChild=build_TreeFrom_InorderAnd_Preorder(start,position-1,index+1);
+    newnode->RightChild=build_TreeFrom_InorderAnd_Preorder(position+1,End, index+(position-start)+1);
     return newnode;
 }
 
@@ -87,7 +88,7 @@ int main()
         cin>>Preorder[i];
         //cout<<Preorder[i]<<" ";
     }
-    TreeNode *Root=build_TreeFrom_InorderAnd_Preorder(0,n-1);
+    TreeNode *Root=build_TreeFrom_InorderAnd_Preorder(0,n-1,0);
     //For checking The tree Try to travers with postorder traversal
     PostOrder_Traversal(Root);
     return 0;
