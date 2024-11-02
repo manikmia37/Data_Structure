@@ -78,6 +78,6 @@ input:
 -1 -1 -1 -1
 
 output:
-Inorder Traversal:
+Inorder Traversal: 3 1 4 0 7 5 8 2 6
 */
 
